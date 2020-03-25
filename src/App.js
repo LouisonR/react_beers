@@ -7,13 +7,12 @@ function App() {
 
 
   useEffect(() => {
-
-    fetch('https://api.punkapi.com/v2/beers?page='+pageNumber)
+    fetch('https://api.punkapi.com/v2/beers?page=' + pageNumber)
       .then(response => response.json())
       .then(setBeers);
   }, [pageNumber]);
 
-  const increment = () => { setPage(pageNumber + 1) }
+  const increment = () => {if (pageNumber < 13) {setPage(pageNumber + 1)}}
   const decrement = () => {if (pageNumber > 1) {setPage(pageNumber - 1)}}
 
 
@@ -21,7 +20,10 @@ function App() {
     <div>
       <ul>
         {beers.map(beer => (
-          <li key={beer.id}>{beer.name}</li>
+          <li key={beer.id}>
+            {beer.name}
+            <img src={beer.image_url} alt={beer.name} className="beer-image"/>
+          </li>
         ))}
       </ul>
 
@@ -30,6 +32,7 @@ function App() {
     </div>
   );
 }
+
 
 
 export default App;
