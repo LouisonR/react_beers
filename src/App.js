@@ -1,3 +1,5 @@
+//https://github.com/antoinechalifour/punk-web-app
+
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
@@ -22,6 +24,7 @@ function App() {
         {beers.map(beer => (
           <li key={beer.id}>
             {beer.name}
+            <a href={beer.name}> {beer.name}</a>
             <img src={beer.image_url} alt={beer.name} className="beer-image"/>
           </li>
         ))}
@@ -32,7 +35,6 @@ function App() {
     </div>
   );
 }
-
 
 
 export default App;
